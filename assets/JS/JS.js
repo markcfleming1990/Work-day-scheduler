@@ -54,3 +54,4 @@ $(document).ready(function () {
     $("#hour17 .description").val(localStorage.getItem("hour17"));
 
     timeTracker();
+})
