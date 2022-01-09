@@ -1,15 +1,23 @@
-// Display today's day and date
+// header shows date under title
 var todayDate = moment().format('dddd, MMM Do YYYY');
 $("#currentDay").html(todayDate);
 
-//main function
+$(document).ready(function () {
+  // button at the end of every hour block 
+  $(".saveBtn").on("click", function () {
+      var text = $(this).siblings(".description").val();
+      var time = $(this).parent().attr("id");
 
-//set up function
+      // Save text in local storage
+      localStorage.setItem(time, text);
+  })
+
+//set up  main function
   function timeTracker() {
     // set up a variable this is the object that the function returns
     var timeNow = moment().hour();
 
-    //highlight loop
+    //time blocks have to be able to highlight for past present and future
     $(".time-block").each(function () {
       var blockTime = parseInt($(this).attr("id").split("hour")[1]);
 
@@ -33,4 +41,16 @@ $("#currentDay").html(todayDate);
     })
   }
 
-  timeTracker();
+
+    $("#hour8 .description").val(localStorage.getItem("hour8"));
+    $("#hour9 .description").val(localStorage.getItem("hour9"));
+    $("#hour10 .description").val(localStorage.getItem("hour10"));
+    $("#hour11 .description").val(localStorage.getItem("hour11"));
+    $("#hour12 .description").val(localStorage.getItem("hour12"));
+    $("#hour13 .description").val(localStorage.getItem("hour13"));
+    $("#hour14 .description").val(localStorage.getItem("hour14"));
+    $("#hour15 .description").val(localStorage.getItem("hour15"));
+    $("#hour16 .description").val(localStorage.getItem("hour16"));
+    $("#hour17 .description").val(localStorage.getItem("hour17"));
+
+    timeTracker();
